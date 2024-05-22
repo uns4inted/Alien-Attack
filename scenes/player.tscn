@@ -9,6 +9,7 @@ radius = 36.0
 height = 104.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_sxmef")
 rocket_scene = ExtResource("2_ffiy1")

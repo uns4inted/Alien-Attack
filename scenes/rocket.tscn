@@ -8,6 +8,8 @@ radius = 9.0
 height = 44.0
 
 [node name="Rocket" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_7g34w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,3 +23,5 @@ shape = SubResource("CapsuleShape2D_df454")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.5, 0)
 scale = Vector2(2.25, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -5,3 +5,6 @@ extends Area2D
 
 func _physics_process(delta):
 	global_position.x -= speed * delta
+
+func die():
+	queue_free()
