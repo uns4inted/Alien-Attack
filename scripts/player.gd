@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal took_damage
+
 @export var speed = 300
 @export var rocket_scene: PackedScene # projectile rockets of player
 
@@ -35,3 +37,9 @@ func shoot():
 	rocket_container.add_child(rocket)
 	rocket.global_position = global_position
 	rocket.global_position.x += 60
+
+func take_damage():
+	emit_signal("took_damage")
+		
+func die():
+	queue_free()

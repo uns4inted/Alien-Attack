@@ -1,5 +1,7 @@
 extends Node2D
 
+signal enemy_spawned(enemy_instance)
+
 @export var enemy_scene: PackedScene
 
 @onready var spawn_positions = $SpawnPositions.get_children() # array of spawn points
@@ -12,4 +14,4 @@ func spawn_enemy():
 	
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = random_spawn_position.global_position
-	add_child(enemy)
+	emit_signal("enemy_spawned", enemy)
