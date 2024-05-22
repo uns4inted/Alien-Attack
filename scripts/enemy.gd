@@ -12,6 +12,8 @@ func die():
 	emit_signal("died")
 	queue_free()
 
+func despawn():
+	queue_free()
 
 func _on_body_entered(body):
 	body.take_damage()
