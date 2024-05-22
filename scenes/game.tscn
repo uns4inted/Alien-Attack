@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccicogse8j1hr"]
+[gd_scene load_steps=4 format=3 uid="uid://ccicogse8j1hr"]
 
 [ext_resource type="Texture2D" uid="uid://2fphbv7maanp" path="res://assets/textures/bg.png" id="1_cvx31"]
 [ext_resource type="PackedScene" uid="uid://dq1myq4lcslns" path="res://scenes/player.tscn" id="2_66jyl"]
+[ext_resource type="PackedScene" uid="uid://bhpb7fk3jt417" path="res://scenes/enemy.tscn" id="3_n5ebb"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,3 +14,6 @@ stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_66jyl")]
 position = Vector2(117, 368)
+
+[node name="Enemy" parent="." instance=ExtResource("3_n5ebb")]
+position = Vector2(643, 313)
