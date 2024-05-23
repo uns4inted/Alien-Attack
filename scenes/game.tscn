@@ -28,6 +28,7 @@ stretch_mode = 1
 position = Vector2(117, 368)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_0gx7f")]
+spawn_time_seconds = 1
 
 [node name="DeathZone" type="Area2D" parent="."]
 collision_layer = 8
