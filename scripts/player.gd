@@ -6,6 +6,7 @@ signal took_damage
 @export var rocket_scene: PackedScene # projectile rockets of player
 
 @onready var rocket_container = $RocketContainer
+@onready var on_being_hit_sound = $OnBeingHitSFX
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -40,6 +41,9 @@ func shoot():
 
 func take_damage():
 	emit_signal("took_damage")
+	on_being_hit_sound.play()
 		
 func die():
+	hide()
+	await on_being_hit_sound.finished
 	queue_free()

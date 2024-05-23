@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dakbu84eepgio"]
+[gd_scene load_steps=5 format=3 uid="uid://dakbu84eepgio"]
 
 [ext_resource type="Script" path="res://scripts/rocket.gd" id="1_7g34w"]
 [ext_resource type="Texture2D" uid="uid://dx0sd8u01rppl" path="res://assets/textures/rocket.png" id="1_hkid3"]
+[ext_resource type="AudioStream" uid="uid://cuuihwakbcv2m" path="res://assets/audio/sfx_laser2.wav" id="3_saasr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_df454"]
 radius = 9.0
@@ -23,5 +24,8 @@ shape = SubResource("CapsuleShape2D_df454")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.5, 0)
 scale = Vector2(2.25, 1)
+
+[node name="LaunchSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_saasr")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
