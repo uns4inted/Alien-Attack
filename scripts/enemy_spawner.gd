@@ -15,3 +15,6 @@ func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = random_spawn_position.global_position
 	emit_signal("enemy_spawned", enemy)
+
+func stop_spawner():
+	$Timer.stop()

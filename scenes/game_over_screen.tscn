@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdj747q2ctuj7"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_ajw6o"]
+[ext_resource type="FontFile" uid="uid://djol26sdoyo1x" path="res://assets/font/Kenney Blocks.ttf" id="1_ib3ao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asqb0"]
+bg_color = Color(0, 0, 0, 0.686275)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ts2p8"]
+font = ExtResource("1_ib3ao")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ter0o"]
+font = ExtResource("1_ib3ao")
+font_size = 48
+font_color = Color(1, 0.811765, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bybh"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.329412)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.901961)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km1of"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.329412)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.3455, 1, 0.23, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5tnc"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.329412)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.198599, 0.845587, 1.11663e-05, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ajw6o")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_asqb0")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 45.0
+offset_right = 208.0
+offset_bottom = 141.0
+grow_horizontal = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_ts2p8")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 0000"
+label_settings = SubResource("LabelSettings_ter0o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -130.0
+offset_right = 172.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_pressed_color = Color(0.3455, 1, 0.23, 1)
+theme_override_fonts/font = ExtResource("1_ib3ao")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_2bybh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_km1of")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v5tnc")
+text = "PLAY AGAIN"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

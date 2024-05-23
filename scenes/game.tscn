@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccicogse8j1hr"]
+[gd_scene load_steps=8 format=3 uid="uid://ccicogse8j1hr"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ai6ur"]
 [ext_resource type="Texture2D" uid="uid://2fphbv7maanp" path="res://assets/textures/bg.png" id="1_cvx31"]
+[ext_resource type="PackedScene" uid="uid://bdj747q2ctuj7" path="res://scenes/game_over_screen.tscn" id="2_6p6ap"]
 [ext_resource type="PackedScene" uid="uid://dq1myq4lcslns" path="res://scenes/player.tscn" id="2_66jyl"]
 [ext_resource type="PackedScene" uid="uid://c5uybqrnnq6wg" path="res://scenes/hud.tscn" id="2_k8800"]
 [ext_resource type="PackedScene" uid="uid://tpgf4jfdc8qh" path="res://scenes/enemy_spawner.tscn" id="3_0gx7f"]
@@ -11,6 +12,7 @@ size = Vector2(20, 743)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ai6ur")
+game_over_screen = ExtResource("2_6p6ap")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

@@ -3,6 +3,9 @@ extends Node2D
 @export var lives = 3
 @export var score_for_kill = 100
 @export var damage_penalty = 500
+
+@export var game_over_screen: PackedScene
+
 var score = 0
 
 @onready var player = $Player
@@ -28,6 +31,7 @@ func _on_player_took_damage():
 	update_lives_label()
 	if (lives < 1):
 		player.die()
+		game_over()
 
 
 func _on_enemy_spawner_enemy_spawned(enemy_instance):
@@ -43,3 +47,13 @@ func update_score_label():
 
 func update_lives_label():
 	hud.set_lives_label(lives)
+
+func game_over():
+	await get_tree().create_timer(1.5).timeout
+	
+	var game_over_screen_instance = game_over_screen.instantiate()
+	game_over_screen_instance.set_score_label(score)
+	$UI.add_child(game_over_screen_instance)
+	
+	$UI/HUD.hide()
+	$EnemySpawner.stop_spawner()
