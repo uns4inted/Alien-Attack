@@ -11,6 +11,7 @@ var score = 0
 @onready var player = $Player
 @onready var hud = $UI/HUD
 
+
 func _ready():
 	update_score_label()
 	update_lives_label()

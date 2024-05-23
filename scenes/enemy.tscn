@@ -1,8 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhpb7fk3jt417"]
+[gd_scene load_steps=11 format=3 uid="uid://bhpb7fk3jt417"]
 
 [ext_resource type="Texture2D" uid="uid://i5wtheqdcwsi" path="res://assets/textures/enemy_ship.png" id="1_2oh2m"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_3nta0"]
 [ext_resource type="AudioStream" uid="uid://dbq53glpll1i1" path="res://assets/audio/hit.wav" id="3_nkt86"]
+
+[sub_resource type="Gradient" id="Gradient_xayrg"]
+offsets = PackedFloat32Array(0, 0.639344, 1)
+colors = PackedColorArray(0.00392157, 0.647059, 0.639216, 0.427451, 0.00784314, 0.470588, 0.52549, 1, 0.541176, 0.423529, 0.490196, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_04v8m"]
+gradient = SubResource("Gradient_xayrg")
+
+[sub_resource type="Curve" id="Curve_ddlbq"]
+_data = [Vector2(0.246667, 0.175824), 0.0, -0.608622, 0, 0, Vector2(0.753333, 0.450549), 0.0, 0.0, 0, 0, Vector2(1, 0.747253), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_auuxs"]
+curve = SubResource("Curve_ddlbq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_baif0"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 12, 1)
+gravity = Vector3(90, 0, 0)
+radial_accel_min = -25.0
+radial_accel_max = 25.0
+tangential_accel_min = -20.0
+tangential_accel_max = 20.0
+scale_min = 0.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_auuxs")
+color_ramp = SubResource("GradientTexture1D_04v8m")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlxbi"]
 radius = 31.0
@@ -15,6 +44,13 @@ size = Vector2(37, 23.75)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_3nta0")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(53, 0)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_baif0")
+speed_scale = 2.0
+randomness = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708

@@ -1,9 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq1myq4lcslns"]
+[gd_scene load_steps=12 format=3 uid="uid://dq1myq4lcslns"]
 
 [ext_resource type="Texture2D" uid="uid://cyn4mf3p6cfkb" path="res://assets/textures/player_ship.png" id="1_8a5tw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_sxmef"]
 [ext_resource type="PackedScene" uid="uid://dakbu84eepgio" path="res://scenes/rocket.tscn" id="2_ffiy1"]
 [ext_resource type="AudioStream" uid="uid://2ex1vl247myc" path="res://assets/audio/explode.wav" id="4_gofs6"]
+
+[sub_resource type="Gradient" id="Gradient_aqevd"]
+offsets = PackedFloat32Array(0, 0.688525, 1)
+colors = PackedColorArray(0.137255, 0, 1, 0.631373, 1, 0.184314, 0.0392157, 1, 1, 0.356863, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ije1"]
+gradient = SubResource("Gradient_aqevd")
+
+[sub_resource type="Curve" id="Curve_i5w0s"]
+_data = [Vector2(0.246667, 0.175824), 0.0, -0.608622, 0, 0, Vector2(0.753333, 0.450549), 0.0, 0.0, 0, 0, Vector2(1, 0.747253), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dxh7n"]
+curve = SubResource("Curve_i5w0s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nuycu"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 8, 1)
+gravity = Vector3(-90, 0, 0)
+radial_accel_min = -25.0
+radial_accel_max = 25.0
+tangential_accel_min = -20.0
+tangential_accel_max = 20.0
+scale_min = 0.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_dxh7n")
+color_ramp = SubResource("GradientTexture1D_8ije1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nlm7q"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 8, 1)
+gravity = Vector3(-90, 0, 0)
+radial_accel_min = -25.0
+radial_accel_max = 25.0
+tangential_accel_min = -20.0
+tangential_accel_max = 20.0
+scale_min = 0.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_dxh7n")
+color_ramp = SubResource("GradientTexture1D_8ije1")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b3bu"]
 radius = 36.0
@@ -14,6 +58,20 @@ collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_sxmef")
 rocket_scene = ExtResource("2_ffiy1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-15, -29)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_nuycu")
+speed_scale = 2.0
+randomness = 0.5
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(-14, 29)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_nlm7q")
+speed_scale = 2.0
+randomness = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
