@@ -5,6 +5,7 @@ extends Node2D
 
 var selected_path
 var pathfollow
+var speed = 0.1
 
 func _ready():
 	#spawn_enemy() # uncomment to test
@@ -19,7 +20,7 @@ func _process(delta):
 	if pathfollow.progress_ratio <= 0:
 		queue_free()
 	else:
-		pathfollow.progress_ratio -= 0.1 * delta
+		pathfollow.progress_ratio -= speed * delta
 
 func set_random_path():
 	selected_path = get_tree().get_nodes_in_group("EnemyPath").pick_random()

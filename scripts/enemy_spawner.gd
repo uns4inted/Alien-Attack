@@ -6,6 +6,8 @@ signal special_enemy_spawned(special_enemy)
 @export var enemy_scene: PackedScene
 @export var enemy_spawn_time = 2 ## in sceonds
 @export var special_enemy_spawn_time = 3 ## in seconds
+@export var enemy_speed = 300
+@export var special_enemy_speed = 0.1 ## 0.1 - 0.3 is optimal
 
 var enemies_with_path = preload("res://scenes/enemy_with_path.tscn")
 @onready var spawn_positions = $SpawnPositions.get_children() # array of spawn points
@@ -24,16 +26,17 @@ func spawn_enemy():
 	
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = random_spawn_position.global_position
+	enemy.speed = enemy_speed
 	emit_signal("enemy_spawned", enemy)
 
 func stop_spawner():
 	$Timer.stop()
 	$TimerForSpecialEnemies.stop()
 
-
 func _on_timer_for_special_enemies_timeout():
 	spawn_special_enemy()
 
 func spawn_special_enemy():
 	var special_enemy = enemies_with_path.instantiate()
+	special_enemy.speed = special_enemy_speed
 	emit_signal("special_enemy_spawned", special_enemy)
