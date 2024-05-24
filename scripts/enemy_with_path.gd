@@ -36,3 +36,4 @@ func spawn_enemy(): ## select random path and spawn an enemy on it
 	enemy.reparent(pathfollow)
 	enemy.global_position = pathfollow.global_position
 	enemy.speed = 0
+	enemy.get_node("Sprite2D").texture = load("res://assets/textures/enemy_ship_2.png")
