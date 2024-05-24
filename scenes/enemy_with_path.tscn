@@ -23,7 +23,6 @@ point_count = 15
 
 [node name="EnemyWithPath" type="Node2D"]
 script = ExtResource("1_j81ox")
-enemy_scene = ExtResource("2_awg4o")
 metadata/_edit_vertical_guides_ = [-1230.0]
 metadata/_edit_horizontal_guides_ = [721.0, 354.0, 721.0]
 
@@ -38,3 +37,7 @@ curve = SubResource("Curve2D_s7oss")
 [node name="Path3" type="Path2D" parent="." groups=["EnemyPath"]]
 position = Vector2(-95, -251)
 curve = SubResource("Curve2D_tjtcn")
+
+[node name="Enemy" parent="." instance=ExtResource("2_awg4o")]
+position = Vector2(-95, -251)
+speed = 0

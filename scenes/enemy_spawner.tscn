@@ -6,6 +6,7 @@
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_ulh42")
 enemy_scene = ExtResource("2_03e1m")
+special_enemy_spawn_time = 5
 
 [node name="SpawnPositions" type="Node2D" parent="."]
 
@@ -31,4 +32,9 @@ position = Vector2(1350, 675)
 wait_time = 2.0
 autostart = true
 
+[node name="TimerForSpecialEnemies" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerForSpecialEnemies" to="." method="_on_timer_for_special_enemies_timeout"]

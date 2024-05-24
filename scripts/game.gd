@@ -58,3 +58,9 @@ func game_over():
 	
 	$UI/HUD.hide()
 	$EnemySpawner.stop_spawner()
+
+
+func _on_enemy_spawner_special_enemy_spawned(path_enemy):
+	add_child(path_enemy)
+	path_enemy.spawn_enemy()
+	path_enemy.enemy.connect("died", _on_enemy_died)
