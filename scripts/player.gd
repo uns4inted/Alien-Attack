@@ -3,10 +3,13 @@ extends CharacterBody2D
 signal took_damage
 
 @export var speed = 300
+@export var fire_cd_time = 0.35 ## in seconds
 @export var rocket_scene: PackedScene # projectile rockets of player
 
 @onready var rocket_container = $RocketContainer
 @onready var on_being_hit_sound = $OnBeingHitSFX
+
+var fire_on_cd = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -34,10 +37,15 @@ func _physics_process(delta):
 
 
 func shoot():
-	var rocket = rocket_scene.instantiate()
-	rocket_container.add_child(rocket)
-	rocket.global_position = global_position
-	rocket.global_position.x += 60
+	if !fire_on_cd:
+		var rocket = rocket_scene.instantiate()
+		rocket_container.add_child(rocket)
+		rocket.global_position = global_position
+		rocket.global_position.x += 60
+		
+		fire_on_cd = true
+		await get_tree().create_timer(fire_cd_time).timeout
+		fire_on_cd = false
 
 func take_damage():
 	emit_signal("took_damage")

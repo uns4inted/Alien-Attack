@@ -42,6 +42,7 @@ func _on_enemy_spawner_enemy_spawned(enemy_instance):
 	enemy_instance.connect("died", _on_enemy_died)	
 	add_child(enemy_instance)
 
+## TODO: add bonus points for special enemies
 func _on_enemy_died():
 	score += score_for_kill
 	update_score_label()
