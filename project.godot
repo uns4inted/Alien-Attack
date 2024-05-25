@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [input]
@@ -59,3 +60,8 @@ shoot={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Rocket"
 2d_physics/layer_4="Death Zone"
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/use_taa=true

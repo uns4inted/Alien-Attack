@@ -1,4 +1,8 @@
 extends Node2D
+## TODO: Add background music
+## TODO: Add start menu
+## TODO: Add additional health drops
+## TODO: Add some tilt/force movement to enemies or player, to prevent abusing spam-fire standing on one place
 
 @export var lives = 3
 @export var score_for_kill = 100
@@ -12,7 +16,7 @@ var score = 0
 @onready var hud = $UI/HUD
 @onready var timer = $Timer
 
-var time = 20 # seconds from start
+var time = 0 # seconds from start
 
 
 func _ready():
