@@ -42,9 +42,13 @@ func _on_enemy_spawner_enemy_spawned(enemy_instance):
 	enemy_instance.connect("died", _on_enemy_died)	
 	add_child(enemy_instance)
 
-## TODO: add bonus points for special enemies
 func _on_enemy_died():
 	score += score_for_kill
+	update_score_label()
+	
+## TODO: add bonus points for special enemies
+func _on_special_enemy_died():
+	score += (score_for_kill * 3)
 	update_score_label()
 
 func update_score_label():
@@ -67,7 +71,7 @@ func game_over():
 func _on_enemy_spawner_special_enemy_spawned(path_enemy):
 	add_child(path_enemy)
 	path_enemy.spawn_enemy()
-	path_enemy.enemy.connect("died", _on_enemy_died)
+	path_enemy.enemy.connect("died", _on_special_enemy_died)
 
 
 func _on_timer_timeout():
